@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { DragDropContext } from 'react-beautiful-dnd';
 import './App.css';
 import InputFields from './components/InputFields';
 import TodoList from './components/TodoList';
@@ -7,6 +8,7 @@ import { Todo } from './models/models';
 function App() {
   const [todo, setTodo] = useState<string>('');
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [completedTodos, setCompletedTodos] = useState<Todo[]>([]);
 
   const handleAddTodo = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -19,12 +21,14 @@ function App() {
   console.log(todos);
 
   return (
-    <div className="App">
-      <span className="heading">Taskify</span>
-      <InputFields todo={todo} setTodo={setTodo} handleAddTodo={handleAddTodo} />
-      <TodoList todos={todos} setTodos={setTodos} />
+    <DragDropContext onDragEnd={() => { }}>
+      <div className="App">
+        <span className="heading">Taskify</span>
+        <InputFields todo={todo} setTodo={setTodo} handleAddTodo={handleAddTodo} />
+        <TodoList todos={todos} setTodos={setTodos} completedTodos={completedTodos} setCompletedTodos={setCompletedTodos} />
+      </div>
+    </DragDropContext>
 
-    </div>
   );
 }
 
