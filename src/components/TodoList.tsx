@@ -41,6 +41,7 @@ const TodoList = ({
           </div>
         )}
       </Droppable>
+
       <Droppable droppableId="TodosRemove">
         {(provided, snapshot) => (
           <div
