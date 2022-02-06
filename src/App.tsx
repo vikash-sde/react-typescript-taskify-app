@@ -54,6 +54,7 @@ function App() {
     }
 
     setCompletedTodos(complete);
+
     setTodos(active);
   };
 
